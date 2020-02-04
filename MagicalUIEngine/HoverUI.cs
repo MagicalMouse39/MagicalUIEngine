@@ -16,13 +16,6 @@ namespace MagicalUIEngine
 {
     public class HoverUI : Form
     {
-        public class RenderEventArgs : EventArgs
-        {
-            public Graphics Graphics;
-
-            public RenderEventArgs(Graphics graphics) => this.Graphics = graphics;
-        }
-
         public delegate void RenderEventHandler(object sender, RenderEventArgs args);
         public event RenderEventHandler Render;
         protected void OnRender(RenderEventArgs args) => this.Render?.Invoke(this, args);
@@ -38,13 +31,7 @@ namespace MagicalUIEngine
 
         protected BufferedPanel canvas;
 
-        private void SetWindowPassthru(bool passthrough)
-        {
-            if (passthrough)
-                Interoperator.SetWindowLong(this.Handle, -20, PassthruWindowStyle);
-            else
-                Interoperator.SetWindowLong(this.Handle, -20, OriginalWindowStyle);
-        }
+        private void SetWindowPassthru(bool passthrough) => Interoperator.SetWindowLong(this.Handle, -20, passthrough ? PassthruWindowStyle : OriginalWindowStyle);
 
         public string GetPathToFileInAssembly(string relativePath)
         {
@@ -61,7 +48,7 @@ namespace MagicalUIEngine
         {
             while (this.IsApplicationIdle())
             {
-                TopMost = true;
+                this.TopMost = true;
                 this.canvas.BringToFront();
                 this.canvas.Invalidate();
                 Thread.Sleep(8);

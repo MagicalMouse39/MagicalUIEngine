@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MagicalUIEngine.Shapes
 {
-    class Rectangle : Shape
+    public class Rectangle : Shape
     {
         public int Width, Height;
 

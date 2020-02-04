@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,20 +16,14 @@ namespace TestApp
         {
             HoverUI ui = new HoverUI();
 
-            int X = 0, Y = 0;
-
             ui.Render += (s, e) =>
             {
                 Graphics g = e.Graphics;
 
-                if (ui.GetBackgroundKeyDown(Keys.Right))
-                    X++;
-
-                if (ui.GetBackgroundKeyDown(Keys.Left))
-                    X--;
-
-                g.FillRectangle(Brushes.White, X, Y, 50, 50);
+                g.DrawString("Minecraft", new Font("Minecrafter", 32, FontStyle.Regular), Brushes.OrangeRed, 100, 50);
             };
+
+            ui.FormClosing += (s, e) => e.Cancel = true;
 
             ui.Run();
         }

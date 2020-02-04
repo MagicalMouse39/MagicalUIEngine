@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MagicalUIEngine.Shapes
 {
-    class Ellipse : Shape
+    public class Ellipse : Shape
     {
         public int Width, Height;
 

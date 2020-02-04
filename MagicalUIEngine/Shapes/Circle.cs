@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MagicalUIEngine.Shapes
 {
-    class Circle : Shape
+    public class Circle : Shape
     {
         public int Radius;
 
