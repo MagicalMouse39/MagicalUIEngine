@@ -22,7 +22,8 @@ namespace MagicalUIEngine
 
             public RenderEventArgs(Graphics graphics) => this.Graphics = graphics;
         }
-        public delegate EventHandler RenderEventHandler(object sender, RenderEventArgs args);
+
+        public delegate void RenderEventHandler(object sender, RenderEventArgs args);
         public event RenderEventHandler Render;
         protected void OnRender(RenderEventArgs args) => this.Render?.Invoke(this, args);
 
@@ -34,7 +35,6 @@ namespace MagicalUIEngine
         internal IntPtr OriginalWindowStyle;
         internal IntPtr PassthruWindowStyle;
         private List<Shape> Shapes;
-        private List<Action> RenderDelegates;
 
         protected BufferedPanel canvas;
 
@@ -68,7 +68,7 @@ namespace MagicalUIEngine
             }
         }
 
-        public bool BackgroundKeyDown(Keys key)
+        public bool GetBackgroundKeyDown(Keys key)
         {
             return Interoperator.GetAsyncKeyState(key) != 0;
         }
