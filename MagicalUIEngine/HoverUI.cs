@@ -16,6 +16,16 @@ namespace MagicalUIEngine
 {
     public class HoverUI : Form
     {
+        public class RenderEventArgs : EventArgs
+        {
+            public Graphics Graphics;
+
+            public RenderEventArgs(Graphics graphics) => this.Graphics = graphics;
+        }
+        public delegate EventHandler RenderEventHandler(object sender, RenderEventArgs args);
+        public event RenderEventHandler Render;
+        protected void OnRender(RenderEventArgs args) => this.Render?.Invoke(this, args);
+
         public const int GWL_EXSTYLE = -20;
         internal const int WS_EX_LAYERED = 524288;
         internal const int WS_EX_TRANSPARENT = 32;
@@ -23,7 +33,8 @@ namespace MagicalUIEngine
         internal const int LWA_COLORKEY = 1;
         internal IntPtr OriginalWindowStyle;
         internal IntPtr PassthruWindowStyle;
-        private List<Shape> shapes;
+        private List<Shape> Shapes;
+        private List<Action> RenderDelegates;
 
         protected BufferedPanel canvas;
 
@@ -66,7 +77,9 @@ namespace MagicalUIEngine
         {
             Graphics g = e.Graphics;
             
-            foreach (Shape s in this.shapes)
+            this.OnRender(new RenderEventArgs(g));
+
+            foreach (Shape s in this.Shapes)
             {
                 if (s.GetType() == typeof(Shapes.Rectangle))
                 {
@@ -91,7 +104,7 @@ namespace MagicalUIEngine
             }
         }
 
-        public void AddShape(Shape shape) => this.shapes.Add(shape);
+        public void AddShape(Shape shape) => this.Shapes.Add(shape);
 
         public void OpenSubform(Form f)
         {
@@ -102,7 +115,7 @@ namespace MagicalUIEngine
 
         public HoverUI()
         {
-            this.shapes = new List<Shape>();
+            this.Shapes = new List<Shape>();
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
