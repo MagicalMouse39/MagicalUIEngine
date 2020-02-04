@@ -78,18 +78,20 @@ namespace MagicalUIEngine
                 if (s.GetType() == typeof(Shapes.Circle))
                 {
                     Shapes.Circle circ = s as Shapes.Circle;
-                    g.FillEllipse(circ.BorderBrush, circ.X, circ.Y, circ.Radius, circ.Radius);
+                    g.FillEllipse(circ.BackBrush, circ.X, circ.Y, circ.Radius, circ.Radius);
                     g.DrawEllipse(new Pen(circ.BorderBrush) { Width = circ.BorderThickness }, circ.X, circ.Y, circ.Radius, circ.Radius);
                 }
 
                 if (s.GetType() == typeof(Shapes.Ellipse))
                 {
                     Shapes.Ellipse ell = s as Shapes.Ellipse;
-                    g.FillEllipse(ell.BorderBrush, ell.X, ell.Y, ell.Width, ell.Height);
+                    g.FillEllipse(ell.BackBrush, ell.X, ell.Y, ell.Width, ell.Height);
                     g.DrawEllipse(new Pen(ell.BorderBrush) { Width = ell.BorderThickness }, ell.X, ell.Y, ell.Width, ell.Height);
                 }
             }
         }
+
+        public void AddShape(Shape shape) => this.shapes.Add(shape);
 
         public void OpenSubform(Form f)
         {
@@ -122,10 +124,6 @@ namespace MagicalUIEngine
             this.canvas.BringToFront();
             this.canvas.Paint += CanvasRender;
             this.Controls.Add(this.canvas);
-
-            this.shapes.Add(new Shapes.Rectangle(new Point(100, 100), Color.Red, 100, 100, 5) { BorderBrush = Brushes.Yellow });
-            this.shapes.Add(new Shapes.Circle(new Point(100, 500), Color.Blue, 100, 5) { BorderBrush = Brushes.Green });
-            this.shapes.Add(new Shapes.Rectangle(new Point(500, 100), Color.Turquoise, 100, 50, 5) { BorderBrush = Brushes.Violet });
         }
 
         public void Run()
