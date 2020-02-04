@@ -20,7 +20,7 @@ namespace TestApp
             {
                 Graphics g = e.Graphics;
 
-                g.DrawString("Minecraft", new Font("Minecrafter", 32, FontStyle.Regular), Brushes.OrangeRed, 100, 50);
+                g.DrawString("Minecraft", new Font("Minecrafter", 32, FontStyle.Regular), Brushes.OrangeRed, 500, 500);
             };
 
             ui.FormClosing += (s, e) => e.Cancel = true;
