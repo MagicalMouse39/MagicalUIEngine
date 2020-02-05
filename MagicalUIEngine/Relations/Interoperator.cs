@@ -22,6 +22,9 @@ namespace MagicalUIEngine.Relations
             public Point Location;
         }
 
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
+        internal static extern int BitBlt(IntPtr hDC, int x, int y, int nWidth, int nHeight, IntPtr hSrcDC, int xSrc, int ySrc, int dwRop);
+
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
 

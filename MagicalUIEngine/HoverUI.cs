@@ -4,6 +4,7 @@ using MagicalUIEngine.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -108,20 +109,33 @@ namespace MagicalUIEngine
             f.Show();
         }
 
-        public void AddCustomImage(Point location, Image image)
+        public void AddCustomImage(Point location, Image image) => this.canvas.Controls.Add(new PictureBox() { Image = image, Location = location, Size = image.Size });
+
+        public void AddCustomImage(int x, int y, Image image) => this.AddCustomImage(new Point(x, y), image);
+
+        private static Bitmap screenPixel = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
+        public Color GetColorAtPixel(Point location)
         {
-            var cont = new PictureBox();
+            using (Graphics gdest = Graphics.FromImage(screenPixel))
+            {
+                using (Graphics gsrc = Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    IntPtr hSrcDC = gsrc.GetHdc();
+                    IntPtr hDC = gdest.GetHdc();
+                    int retval = Interoperator.BitBlt(hDC, 0, 0, 1, 1, hSrcDC, location.X, location.Y, (int)CopyPixelOperation.SourceCopy);
+                    gdest.ReleaseHdc();
+                    gsrc.ReleaseHdc();
+                }
+            }
 
-            cont.BorderStyle = BorderStyle.None;
-            cont.Image = image;
-
-            this.Controls.Add(cont);
+            return screenPixel.GetPixel(0, 0);
         }
-
+        
         public HoverUI()
         {
             this.Shapes = new List<Shape>();
 
+            Form.CheckForIllegalCrossThreadCalls = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.StartPosition = FormStartPosition.Manual;
