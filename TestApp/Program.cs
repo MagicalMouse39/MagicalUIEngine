@@ -16,14 +16,11 @@ namespace TestApp
         {
             HoverUI ui = new HoverUI();
 
-            ui.Render += (s, e) =>
-            {
-                Graphics g = e.Graphics;
+            ui.AddShape(new MagicalUIEngine.Shapes.String(100, 100, Color.Blue, "Prova"));
 
-                g.DrawString("Minecraft", new Font("Minecrafter", 32, FontStyle.Regular), Brushes.OrangeRed, 500, 500);
-            };
+            ui.AddShape(new MagicalUIEngine.Shapes.Rectangle(500, 50, Color.OrangeRed, 50, 50, 10) { BorderBrush = Brushes.Purple });
 
-            ui.FormClosing += (s, e) => e.Cancel = true;
+            ui.AddCustomImage(new Image());
 
             ui.Run();
         }

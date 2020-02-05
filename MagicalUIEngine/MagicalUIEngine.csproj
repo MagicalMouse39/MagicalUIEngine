@@ -56,6 +56,7 @@
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="Shapes\String.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

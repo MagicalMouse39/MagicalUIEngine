@@ -11,6 +11,18 @@ namespace MagicalUIEngine.Shapes
     {
         public int Width, Height;
 
+        public Ellipse(int X, int Y, Color backColor, int width, int height, float borderThickness = 0) : base(X, Y, backColor, borderThickness)
+        {
+            this.Width = width;
+            this.Height = height;
+        }
+
+        public Ellipse(int X, int Y, Brush backColor, int width, int height, float borderThickness = 0) : base(X, Y, backColor, borderThickness)
+        {
+            this.Width = width;
+            this.Height = height;
+        }
+
         public Ellipse(Point position, Color backColor, int width, int height, float borderThickness = 0) : base(position, backColor, borderThickness)
         {
             this.Width = width;

@@ -88,6 +88,14 @@ namespace MagicalUIEngine
                     g.FillEllipse(ell.BackBrush, ell.X, ell.Y, ell.Width, ell.Height);
                     g.DrawEllipse(new Pen(ell.BorderBrush) { Width = ell.BorderThickness }, ell.X, ell.Y, ell.Width, ell.Height);
                 }
+
+                if (s.GetType() == typeof(Shapes.String))
+                {
+                    Shapes.String str = s as Shapes.String;
+                    g.DrawString(str.Text, str.Font, str.BackBrush, str.Position);
+                }
+
+                //END SHAPES
             }
         }
 
@@ -98,6 +106,16 @@ namespace MagicalUIEngine
             this.IsMdiContainer = true;
             f.MdiParent = this;
             f.Show();
+        }
+
+        public void AddCustomImage(Point location, Image image)
+        {
+            var cont = new PictureBox();
+
+            cont.BorderStyle = BorderStyle.None;
+            cont.Image = image;
+
+            this.Controls.Add(cont);
         }
 
         public HoverUI()

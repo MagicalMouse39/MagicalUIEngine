@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalUIEngine.Components;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -43,6 +44,20 @@ namespace MagicalUIEngine.Shapes
         {
             this.Position = position;
             this.BackBrush = new SolidBrush(backColor);
+            this.BorderThickness = borderThickness;
+        }
+
+        public Shape(int X, int Y, Color backColor, float borderThickness = 0f)
+        {
+            this.Position = new Point(X, Y);
+            this.BackBrush = new SolidBrush(backColor);
+            this.BorderThickness = borderThickness;
+        }
+
+        public Shape(int X, int Y, Brush backColor, float borderThickness = 0f)
+        {
+            this.Position = new Point(X, Y);
+            this.BackBrush = backColor;
             this.BorderThickness = borderThickness;
         }
 

@@ -11,8 +11,9 @@ namespace MagicalUIEngine.Shapes
     {
         public int Radius;
 
+        public Circle(int X, int Y, Color backColor, int radius, float borderThickness = 0) : base(X, Y, backColor, borderThickness) => this.Radius = radius;
+        public Circle(int X, int Y, Brush backColor, int radius, float borderThickness = 0) : base(X, Y, backColor, borderThickness) => this.Radius = radius;
         public Circle(Point position, Color backColor, int radius, float borderThickness = 0) : base(position, backColor, borderThickness) => this.Radius = radius;
-
         public Circle(Point position, Brush backColor, int radius, float borderThickness = 0) : base(position, backColor, borderThickness) => this.Radius = radius;
     }
 }
