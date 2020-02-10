@@ -56,7 +56,9 @@ namespace TestApp
             Form win = new Form();
 
             win.Controls.Add(new GradientPanel() { Dock = DockStyle.Fill, ColorFirst = Color.OrangeRed, ColorSecond = Color .Yellow });
-            win.Controls[0].Controls.Add();
+            GradientLabel lab = new GradientLabel() { Text = "Prova", ColorFirst = Color.Green, ColorSecond = Color.Turquoise, GradientDegree = 0, BackColor = Color.Transparent };
+            lab.EnableRainbow(new RainbowSynchronizer());
+            win.Controls[0].Controls.Add(lab);
 
             Application.EnableVisualStyles();
             Application.Run(win);
