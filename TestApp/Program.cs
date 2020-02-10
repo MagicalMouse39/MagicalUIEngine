@@ -1,4 +1,6 @@
-﻿using MagicalUIEngine;
+﻿using MagicalUIEngine.HoverUI;
+using MagicalUIEngine.HoverUI.Shapes;
+using MagicalUIEngine.HoverUI.Components;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,18 +12,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MagicalUIEngine.MagicalComponents;
 
 namespace TestApp
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void CreateHoverUI()
         {
             HoverUI interfaccia = new HoverUI();
 
-            var rect = new MagicalUIEngine.Shapes.Rectangle(0, 0, Color.OrangeRed, 50, 50);
+            var rect = new ShapeRectangle(0, 0, Color.OrangeRed, 50, 50);
 
-            var color = new MagicalUIEngine.Shapes.String(100, 100, Color.White, "Color: ");
+            var color = new ShapeString(100, 100, Color.White, "Color: ");
 
             interfaccia.Render += (s, e) =>
             {
@@ -46,6 +49,24 @@ namespace TestApp
             interfaccia.AddShape(rect);
 
             interfaccia.Run();
+        }
+
+        private static void CreateMagicalForm()
+        {
+            Form win = new Form();
+
+            win.Controls.Add(new GradientPanel() { Dock = DockStyle.Fill, ColorFirst = Color.OrangeRed, ColorSecond = Color .Yellow });
+            win.Controls[0].Controls.Add();
+
+            Application.EnableVisualStyles();
+            Application.Run(win);
+        }
+
+        static void Main(string[] args)
+        {
+            //CreateHoverUI();
+
+            CreateMagicalForm();
         }
     }
 }

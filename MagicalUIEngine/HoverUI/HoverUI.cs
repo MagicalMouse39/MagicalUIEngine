@@ -1,6 +1,5 @@
-﻿using MagicalUIEngine.Components;
-using MagicalUIEngine.Relations;
-using MagicalUIEngine.Shapes;
+﻿using MagicalUIEngine.Relations;
+using MagicalUIEngine.HoverUI.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,8 +11,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MagicalUIEngine.HoverUI.Components;
 
-namespace MagicalUIEngine
+namespace MagicalUIEngine.HoverUI
 {
     public class HoverUI : Form
     {
@@ -69,30 +69,30 @@ namespace MagicalUIEngine
 
             foreach (Shape s in this.Shapes)
             {
-                if (s.GetType() == typeof(Shapes.Rectangle))
+                if (s.GetType() == typeof(Shapes.ShapeRectangle))
                 {
-                    Shapes.Rectangle rect = s as Shapes.Rectangle;
+                    Shapes.ShapeRectangle rect = s as Shapes.ShapeRectangle;
                     g.FillRectangle(rect.BackBrush, rect.X, rect.Y, rect.Width, rect.Height);
                     g.DrawRectangle(new Pen(rect.BorderBrush) { Width = rect.BorderThickness }, rect.X, rect.Y, rect.Width, rect.Height);
                 }
 
-                if (s.GetType() == typeof(Shapes.Circle))
+                if (s.GetType() == typeof(Shapes.ShapeCircle))
                 {
-                    Shapes.Circle circ = s as Shapes.Circle;
+                    Shapes.ShapeCircle circ = s as Shapes.ShapeCircle;
                     g.FillEllipse(circ.BackBrush, circ.X, circ.Y, circ.Radius, circ.Radius);
                     g.DrawEllipse(new Pen(circ.BorderBrush) { Width = circ.BorderThickness }, circ.X, circ.Y, circ.Radius, circ.Radius);
                 }
 
-                if (s.GetType() == typeof(Shapes.Ellipse))
+                if (s.GetType() == typeof(Shapes.ShapeEllipse))
                 {
-                    Shapes.Ellipse ell = s as Shapes.Ellipse;
+                    Shapes.ShapeEllipse ell = s as Shapes.ShapeEllipse;
                     g.FillEllipse(ell.BackBrush, ell.X, ell.Y, ell.Width, ell.Height);
                     g.DrawEllipse(new Pen(ell.BorderBrush) { Width = ell.BorderThickness }, ell.X, ell.Y, ell.Width, ell.Height);
                 }
 
-                if (s.GetType() == typeof(Shapes.String))
+                if (s.GetType() == typeof(Shapes.ShapeString))
                 {
-                    Shapes.String str = s as Shapes.String;
+                    Shapes.ShapeString str = s as Shapes.ShapeString;
                     g.DrawString(str.Text, str.Font, str.BackBrush, str.Position);
                 }
 

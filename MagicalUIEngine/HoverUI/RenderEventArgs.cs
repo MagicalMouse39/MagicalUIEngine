@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalUIEngine
+namespace MagicalUIEngine.HoverUI
 {
     public class RenderEventArgs : EventArgs
     {
