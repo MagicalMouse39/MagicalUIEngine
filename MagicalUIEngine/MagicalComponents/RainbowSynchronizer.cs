@@ -74,16 +74,12 @@ namespace MagicalUIEngine.MagicalComponents
                     }
                 }
             });
+
             Task.Factory.StartNew(() =>
             {
                 while (!this.stopped)
                 {
                     while (this.paused) ;
-                    for (int i = 0; i < 256; i += step)
-                    {
-                        G1 = i;
-                        this.sleep();
-                    }
                     for (int i = 255; i >= 0; i -= step)
                     {
                         R1 = i;
@@ -107,6 +103,11 @@ namespace MagicalUIEngine.MagicalComponents
                     for (int i = 255; i >= 0; i -= step)
                     {
                         B1 = i;
+                        this.sleep();
+                    }
+                    for (int i = 0; i < 256; i += step)
+                    {
+                        G1 = i;
                         this.sleep();
                     }
                 }

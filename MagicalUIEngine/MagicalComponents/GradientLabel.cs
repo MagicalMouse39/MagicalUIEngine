@@ -18,21 +18,22 @@ namespace TestApp
         public float GradientDegree { get; set; } = 90f;
 
         private bool isRainbow = false;
-        private RainbowSynchronizer RainbowSynch = null;
+        private RainbowSynchronizer rainbowSynch = null;
 
         private int[] rgb = new[] { 255, 0, 0 };
         private int[] rgb2 = new[] { 255, 255, 0 };
 
         public void EnableRainbow(RainbowSynchronizer rs)
         {
-            this.RainbowSynch = rs;
+            this.rainbowSynch = rs;
             this.isRainbow = true;
+            this.Refresh();
         }
 
         public void DisableRainbow()
         {
             this.isRainbow = false;
-            this.RainbowSynch = null;
+            this.rainbowSynch = null;
         }
 
         public GradientLabel()
@@ -41,53 +42,22 @@ namespace TestApp
             {
                 if (this.isRainbow)
                 {
-                    //Update RGB
-                    /*
-                    if (this.rgb[0] == 255 && this.rgb[2] == 0 && this.rgb[1] < 255)
-                        this.rgb[1]++;
-                    if (this.rgb[1] == 255 && this.rgb[2] == 0 && this.rgb[0] > 0)
-                        this.rgb[0]--;
-                    if (this.rgb[0] == 0 && this.rgb[1] == 255 && this.rgb[2] < 255)
-                        this.rgb[2]++;
-                    if (this.rgb[0] == 0 && this.rgb[2] == 255 && this.rgb[1] > 0)
-                        this.rgb[1]--;
-                    if (this.rgb[1] == 0 && this.rgb[2] == 255 && this.rgb[0] < 255)
-                        this.rgb[0]++;
-                    if (this.rgb[0] == 255 && this.rgb[1] == 0 && this.rgb[2] > 0)
-                        this.rgb[2]--;
+                    int R0 = this.rainbowSynch.R0;
+                    int G0 = this.rainbowSynch.G0;
+                    int B0 = this.rainbowSynch.B0;
 
-                    if (this.rgb2[0] == 255 && this.rgb2[2] == 0 && this.rgb2[1] < 255)
-                        this.rgb2[1]++;
-                    if (this.rgb2[1] == 255 && this.rgb2[2] == 0 && this.rgb2[0] > 0)
-                        this.rgb2[0]--;
-                    if (this.rgb2[0] == 0 && this.rgb2[1] == 255 && this.rgb2[2] < 255)
-                        this.rgb2[2]++;
-                    if (this.rgb2[0] == 0 && this.rgb2[2] == 255 && this.rgb2[1] > 0)
-                        this.rgb2[1]--;
-                    if (this.rgb2[1] == 0 && this.rgb2[2] == 255 && this.rgb2[0] < 255)
-                        this.rgb2[0]++;
-                    if (this.rgb2[0] == 255 && this.rgb2[1] == 0 && this.rgb2[2] > 0)
-                        this.rgb2[2]--;
-                    */
-
-                    int R0 = this.RainbowSynch.R0;
-                    int G0 = this.RainbowSynch.G0;
-                    int B0 = this.RainbowSynch.B0;
-
-                    int R1 = this.RainbowSynch.R1;
-                    int G1 = this.RainbowSynch.G1;
-                    int B1 = this.RainbowSynch.B1;
-
-                    //Debug.WriteLine($"R: {R0}, G: {G0}, B: {B0}");
-
+                    int R1 = this.rainbowSynch.R1;
+                    int G1 = this.rainbowSynch.G1;
+                    int B1 = this.rainbowSynch.B1;
+                    
                     //Set color
                     e.Graphics.DrawString(this.Text, this.Font, new LinearGradientBrush(this.ClientRectangle, Color.FromArgb(R0, G0, B0), Color.FromArgb(R1, G1, B1), this.GradientDegree), this.Location);
+                    this.Invalidate();
                 }
                 if (!this.isRainbow)
                 {
                     e.Graphics.DrawString(this.Text, this.Font, new LinearGradientBrush(this.ClientRectangle, this.ColorFirst, this.ColorSecond, this.GradientDegree), this.Location);
                 }
-                this.Refresh();
             };
         }
     }
