@@ -78,15 +78,16 @@ namespace TestApp
                     int G1 = this.RainbowSynch.G1;
                     int B1 = this.RainbowSynch.B1;
 
-                    Debug.WriteLine($"R: {R0}, G: {G0}, B: {B0}");
+                    //Debug.WriteLine($"R: {R0}, G: {G0}, B: {B0}");
 
                     //Set color
-                    //e.Graphics.DrawString(this.Text, this.Font, new LinearGradientBrush(this.ClientRectangle, Color.FromArgb(R0, G0, B0), Color.FromArgb(R1, G1, B1), this.GradientDegree), this.Location);
+                    e.Graphics.DrawString(this.Text, this.Font, new LinearGradientBrush(this.ClientRectangle, Color.FromArgb(R0, G0, B0), Color.FromArgb(R1, G1, B1), this.GradientDegree), this.Location);
                 }
                 if (!this.isRainbow)
                 {
                     e.Graphics.DrawString(this.Text, this.Font, new LinearGradientBrush(this.ClientRectangle, this.ColorFirst, this.ColorSecond, this.GradientDegree), this.Location);
                 }
+                this.Refresh();
             };
         }
     }

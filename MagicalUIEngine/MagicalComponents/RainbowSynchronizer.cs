@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -27,10 +28,12 @@ namespace MagicalUIEngine.MagicalComponents
 
         private void sleep() => Thread.Sleep(this.Delay);
 
+        private int step = 2;
+
         /// <summary>
         /// Milliseconds delay between colour change
         /// </summary>
-        public int Delay { get; set; } = 100;
+        public int Delay { get; set; } = 10;
 
         public RainbowSynchronizer()
         {
@@ -39,32 +42,32 @@ namespace MagicalUIEngine.MagicalComponents
                 while (!this.stopped)
                 {
                     while (this.paused) ;
-                    for (int i = 0; i < 255; i++)
+                    for (int i = 0; i < 256; i += step)
                     {
                         G0 = i;
                         this.sleep();
                     }
-                    for (int i = 255; i >= 0; i--)
+                    for (int i = 255; i >= 0; i -= step)
                     {
                         R0 = i;
                         this.sleep();
                     }
-                    for (int i = 0; i < 255; i++)
+                    for (int i = 0; i < 256; i += step)
                     {
                         B0 = i;
                         this.sleep();
                     }
-                    for (int i = 255; i >= 0; i--)
+                    for (int i = 255; i >= 0; i -= step)
                     {
                         G0 = i;
                         this.sleep();
                     }
-                    for (int i = 0; i < 255; i++)
+                    for (int i = 0; i < 256; i += step)
                     {
                         R0 = i;
                         this.sleep();
                     }
-                    for (int i = 255; i >= 0; i--)
+                    for (int i = 255; i >= 0; i -= step)
                     {
                         B0 = i;
                         this.sleep();
@@ -76,32 +79,32 @@ namespace MagicalUIEngine.MagicalComponents
                 while (!this.stopped)
                 {
                     while (this.paused) ;
-                    for (int i = 0; i < 255; i++)
+                    for (int i = 0; i < 256; i += step)
                     {
                         G1 = i;
                         this.sleep();
                     }
-                    for (int i = 255; i >= 0; i--)
+                    for (int i = 255; i >= 0; i -= step)
                     {
                         R1 = i;
                         this.sleep();
                     }
-                    for (int i = 0; i < 255; i++)
+                    for (int i = 0; i < 256; i += step)
                     {
                         B1 = i;
                         this.sleep();
                     }
-                    for (int i = 255; i >= 0; i--)
+                    for (int i = 255; i >= 0; i -= step)
                     {
                         G1 = i;
                         this.sleep();
                     }
-                    for (int i = 0; i < 255; i++)
+                    for (int i = 0; i < 256; i += step)
                     {
                         R1 = i;
                         this.sleep();
                     }
-                    for (int i = 255; i >= 0; i--)
+                    for (int i = 255; i >= 0; i -= step)
                     {
                         B1 = i;
                         this.sleep();
