@@ -66,7 +66,7 @@ namespace TestApp
             win.Controls[0].Controls.Add(lab);
             */
 
-            win.Controls.Add(new RoundCornerButton() { Left = 100, Top = 100, Width = 100, Height = 100 });
+            win.Controls.Add(new RoundCornerButton() { Left = 100, Top = 100, Width = 100 });
 
             win.Controls[0].Click += (s, e) => MessageBox.Show("Cliccato il bottone");
 

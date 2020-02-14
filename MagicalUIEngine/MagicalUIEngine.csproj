@@ -67,6 +67,7 @@
     <Compile Include="HoverUI\Shapes\ShapeRectangle.cs" />
     <Compile Include="HoverUI\Shapes\Shape.cs" />
     <Compile Include="HoverUI\Shapes\ShapeString.cs" />
+    <Compile Include="Utils\SerializationUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
