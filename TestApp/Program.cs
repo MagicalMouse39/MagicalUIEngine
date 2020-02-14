@@ -55,17 +55,19 @@ namespace TestApp
         {
             Form win = new Form();
 
-            /*
-            RainbowSynchronizer synch = new RainbowSynchronizer();
 
+            //RainbowSynchronizer synch = new RainbowSynchronizer();
+
+            /*
             GradientPanel panel = new GradientPanel() { Dock = DockStyle.Fill, ColorFirst = Color.OrangeRed, ColorSecond = Color.Yellow };
             win.Controls.Add(panel);
-
-            GradientLabel lab = new GradientLabel() { Text = "Prova", Font = new Font("Calibri", 32f, FontStyle.Regular), ColorFirst = Color.Green, ColorSecond = Color.Turquoise, GradientDegree = 0, BackColor = Color.Transparent, Height = 100, Width = 300 };
-            lab.EnableRainbow(synch);
-            win.Controls[0].Controls.Add(lab);
             */
 
+            /*
+            GradientLabel lab = new GradientLabel() { Text = "Prova", Font = new Font("Calibri", 32f, FontStyle.Regular), ColorFirst = Color.Green, ColorSecond = Color.Turquoise, GradientDegree = 0, BackColor = Color.Transparent, Height = 100, Width = 300 };
+            lab.EnableRainbow(synch);
+            win.Controls.Add(lab);
+            */
             win.Controls.Add(new RoundCornerButton() { Left = 100, Top = 100, Width = 100 });
 
             win.Controls[0].Click += (s, e) => MessageBox.Show("Cliccato il bottone");
