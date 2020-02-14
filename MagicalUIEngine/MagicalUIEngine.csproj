@@ -59,6 +59,7 @@
     <Compile Include="MagicalComponents\RoundCornerButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MagicalComponents\SyntaxHighlightingTextArea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HoverUI\Relations\Interoperator.cs" />
     <Compile Include="HoverUI\RenderEventArgs.cs" />
