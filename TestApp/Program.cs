@@ -71,7 +71,7 @@ namespace TestApp
             win.Controls.Add(new RoundCornerButton() { Left = 100, Top = 100, Width = 100 });
 
             Syntax synt = new Syntax();
-            synt.AddWord("Ciao", Color.Blue);
+            synt.AddWord("ciao", Color.Blue, true, true);
 
             win.Controls.Add(new SyntaxHighlightingTextArea(synt) { Dock = DockStyle.Fill });
 

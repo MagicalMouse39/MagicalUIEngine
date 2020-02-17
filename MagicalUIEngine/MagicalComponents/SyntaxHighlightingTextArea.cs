@@ -19,11 +19,8 @@ namespace MagicalUIEngine.MagicalComponents
             this.Multiline = true;
         }
 
-        protected override void OnPreviewKeyDown(PreviewKeyDownEventArgs e)
+        protected override void OnTextChanged(EventArgs e)
         {
-            string key = new KeysConverter().ConvertToString(e.KeyValue);
-            //MessageBox.Show(key + "");
-
             foreach (var hiword in this.syntax.HighlightedWords)
             {
                 if (this.Text.Contains(hiword.Text))
@@ -35,17 +32,16 @@ namespace MagicalUIEngine.MagicalComponents
                     {
                         this.Select((index), hiword.Text.Length);
                         this.SelectionColor = hiword.ForeColor;
+                        this.SelectionBackColor = hiword.BackColor;
+                        this.SelectionFont = new Font(this.SelectionFont, (hiword.Bold ? FontStyle.Bold : 0) | (hiword.Italic ? FontStyle.Italic : 0));
                         this.Select(selectStart, 0);
                         this.SelectionColor = Color.Black;
+                        this.SelectionFont = this.Font;
+                        this.SelectionBackColor = this.BackColor;
+                        this.SelectionColor = this.ForeColor;
                     }
                 }
             }
-
-            base.OnPreviewKeyDown(e);
-        }
-
-        protected override void OnTextChanged(EventArgs e)
-        {
             
             base.OnTextChanged(e);
         }

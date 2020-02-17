@@ -39,8 +39,11 @@ namespace MagicalUIEngine.MagicalComponents
             this.HighlightedWords = new List<HiWord>();
         }
 
+        public void AddWord(string text, Color foreColor, bool bold, bool italic) =>
+            this.AddWord(new HiWord(text, foreColor, bold, italic));
+
         public void AddWord(string text, Color foreColor) =>
-            this.AddWord(new HiWord(text, foreColor));
+            this.AddWord(text, foreColor, false, false);
 
         public void AddWord(string text, Color foreColor, Color backColor) =>
             this.AddWord(new HiWord(text, foreColor, backColor));
