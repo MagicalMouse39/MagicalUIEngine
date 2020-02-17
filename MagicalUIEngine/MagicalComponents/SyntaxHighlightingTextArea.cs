@@ -21,6 +21,12 @@ namespace MagicalUIEngine.MagicalComponents
 
         protected override void OnTextChanged(EventArgs e)
         {
+            int caret = this.SelectionStart;
+            this.Select(0, this.Text.Length);
+            this.SelectionColor = this.ForeColor;
+            this.SelectionFont = this.Font;
+            this.SelectionBackColor = this.BackColor;
+            this.Select(caret, 0);
             foreach (var hiword in this.syntax.HighlightedWords)
             {
                 if (this.Text.Contains(hiword.Text))
@@ -35,7 +41,6 @@ namespace MagicalUIEngine.MagicalComponents
                         this.SelectionBackColor = hiword.BackColor;
                         this.SelectionFont = new Font(this.SelectionFont, (hiword.Bold ? FontStyle.Bold : 0) | (hiword.Italic ? FontStyle.Italic : 0));
                         this.Select(selectStart, 0);
-                        this.SelectionColor = Color.Black;
                         this.SelectionFont = this.Font;
                         this.SelectionBackColor = this.BackColor;
                         this.SelectionColor = this.ForeColor;
