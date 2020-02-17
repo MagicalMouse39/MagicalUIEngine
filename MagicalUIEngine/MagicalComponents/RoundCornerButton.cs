@@ -68,7 +68,7 @@ namespace MagicalUIEngine.MagicalComponents
 
             //Center
             path.AddRectangle(new Rectangle(5 * vw, 5 * vh, this.Width - 10 * vw, this.Height - 10 * vh));
-            inner.AddRectangle(new Rectangle(5 * vw, 5 * vh, this.Width - 10 * vw, this.Height - 10 * vh));
+            //inner.AddRectangle(new Rectangle(5 * vw, 5 * vh, this.Width - 10 * vw, this.Height - 10 * vh));
 
             g.FillRectangle(new SolidBrush(this.Parent.BackColor), this.ClientRectangle);
 

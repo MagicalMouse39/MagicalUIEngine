@@ -70,6 +70,11 @@ namespace TestApp
             */
             win.Controls.Add(new RoundCornerButton() { Left = 100, Top = 100, Width = 100 });
 
+            Syntax synt = new Syntax();
+            synt.AddWord("Ciao", Color.Blue);
+
+            win.Controls.Add(new SyntaxHighlightingTextArea(synt) { Dock = DockStyle.Fill });
+
             win.Controls[0].Click += (s, e) => MessageBox.Show("Cliccato il bottone");
 
             Application.EnableVisualStyles();
