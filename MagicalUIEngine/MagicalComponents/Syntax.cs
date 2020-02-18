@@ -9,6 +9,8 @@ namespace MagicalUIEngine.MagicalComponents
 {
     public class Syntax
     {
+        public Color DefaultBack { get; set; } = Color.Transparent;
+
         public List<HiWord> HighlightedWords;
 
         public struct HiWord
@@ -56,7 +58,7 @@ namespace MagicalUIEngine.MagicalComponents
             foreach (var word in this.HighlightedWords)
                 if (word.Text == text)
                     return word.ForeColor;
-            return Color.Transparent;
+            return this.DefaultBack;
         }
 
         public Color GetBackColorByText(string text)
@@ -64,7 +66,7 @@ namespace MagicalUIEngine.MagicalComponents
             foreach (var word in this.HighlightedWords)
                 if (word.Text == text)
                     return word.BackColor;
-            return Color.Transparent;
+            return this.DefaultBack;
         }
     }
 }

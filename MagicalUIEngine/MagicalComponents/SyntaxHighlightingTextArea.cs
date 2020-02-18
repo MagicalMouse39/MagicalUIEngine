@@ -38,7 +38,7 @@ namespace MagicalUIEngine.MagicalComponents
                     {
                         this.Select((index), hiword.Text.Length);
                         this.SelectionColor = hiword.ForeColor;
-                        this.SelectionBackColor = hiword.BackColor;
+                        this.SelectionBackColor = hiword.BackColor == Color.Transparent ? syntax.DefaultBack : hiword.BackColor;
                         this.SelectionFont = new Font(this.SelectionFont, (hiword.Bold ? FontStyle.Bold : 0) | (hiword.Italic ? FontStyle.Italic : 0));
                         this.Select(selectStart, 0);
                         this.SelectionFont = this.Font;
