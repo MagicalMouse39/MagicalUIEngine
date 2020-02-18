@@ -10,11 +10,11 @@ namespace MagicalUIEngine.MagicalComponents
 {
     public class SyntaxHighlightingTextArea : RichTextBox
     {
-        private Syntax syntax;
+        public Syntax Syntax;
 
         public SyntaxHighlightingTextArea(Syntax syntax)
         {
-            this.syntax = syntax;
+            this.Syntax = syntax;
             this.AcceptsTab = true;
             this.Multiline = true;
         }
@@ -27,7 +27,7 @@ namespace MagicalUIEngine.MagicalComponents
             this.SelectionFont = this.Font;
             this.SelectionBackColor = this.BackColor;
             this.Select(caret, 0);
-            foreach (var hiword in this.syntax.HighlightedWords)
+            foreach (var hiword in this.Syntax.HighlightedWords)
             {
                 if (this.Text.Contains(hiword.Text))
                 {
@@ -38,7 +38,7 @@ namespace MagicalUIEngine.MagicalComponents
                     {
                         this.Select((index), hiword.Text.Length);
                         this.SelectionColor = hiword.ForeColor;
-                        this.SelectionBackColor = hiword.BackColor == Color.Transparent ? syntax.DefaultBack : hiword.BackColor;
+                        this.SelectionBackColor = hiword.BackColor == Color.Transparent ? Syntax.DefaultBack : hiword.BackColor;
                         this.SelectionFont = new Font(this.SelectionFont, (hiword.Bold ? FontStyle.Bold : 0) | (hiword.Italic ? FontStyle.Italic : 0));
                         this.Select(selectStart, 0);
                         this.SelectionFont = this.Font;
